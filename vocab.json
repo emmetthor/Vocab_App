@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "word": "test",
+    "definition": "test",
+    "example": "test",
+    "back": "",
+    "front": "",
+    "main": "",
+    "part-of-speech": null,
+    "parts-of-speech": "",
+    "test-count": 0
+  }
+]
