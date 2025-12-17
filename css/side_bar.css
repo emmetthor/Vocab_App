@@ -1,0 +1,62 @@
+.side_bar {
+    grid-row: 2 / 3;  /* 只占第二列 */
+    grid-column: 1 / 2;
+
+    background: rgb(0, 0, 0);
+
+    height: 100%;      /* 僅占第二列的高度 */
+}
+
+.logo {
+    display: flex;
+
+    align-items: center;
+
+    margin-top: 10px;
+    padding: 3%;
+}
+
+
+.nav {
+    margin-top: 10%;
+}
+
+.nav_list {
+    padding: 0;
+    margin: 0;
+}
+
+.nav_item {
+    display: flex;
+
+    border-radius: 10px;
+
+    border: 2px solid transparent;
+
+    padding: 3%;
+
+    margin: 0 5px 0;
+
+    text-align: center;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.nav_item:not(.nav_item.active):hover {
+    border: 2px solid rgb(70, 70, 70);
+
+    transition: border 100ms ease;
+}
+
+.nav_item.active {
+    background: linear-gradient(90deg, rgb(80, 80, 80), transparent);
+
+    background-size: 110%;
+}
+
+.nav_text {
+    font-size: medium;
+    color: white;
+}

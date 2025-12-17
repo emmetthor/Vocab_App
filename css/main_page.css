@@ -1,0 +1,28 @@
+.main_page {
+    /* display: flex; */
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main_card {
+    /* display: flex; */
+    background-color: rgb(70, 70, 70);
+    color: aliceblue;
+    border-radius: 10px;
+
+    width: 30%;
+
+    padding: 1%;
+
+    transition: all 200ms ease;
+}
+
+.main_card:hover {
+    background-color: rgb(100, 100, 100);
+
+    transform: rotateY(180deg);
+}
+
+.main_card-text {
+    font-size: large;
+}

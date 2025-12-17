@@ -1,0 +1,68 @@
+.head_bar {
+    display: flex;
+
+    grid-row: 1 / 3;  /* 只占第二列 */
+    grid-column: 2 / 3;
+
+    height: 60px; /*僅占第二列的高度 */
+    padding: 10px;
+
+    /*gap: 10%;*/
+
+    align-items: center;
+    justify-content: space-between;
+
+    /* border: 5px solid rgb(70, 70, 70); */
+    border-radius: 10px;
+
+    margin: 10px;
+}
+
+.head_bar:hover::before {
+    animation: border_light 1.2s linear infinite;
+}
+
+@keyframes border_light {
+    0%      {transform: translateX(-100%);}
+    100%    {transform: translateX(100%);}
+}
+
+.title {
+    color: aliceblue;
+
+    font-family: 'Consolas';
+    font-size: xx-large;
+    font-weight: bold;
+    font-display: block;
+
+    letter-spacing: 0.3px;
+}
+
+.quick_search {
+    height: 70%;
+
+    padding: 5px 20px;
+
+    color:aliceblue;
+
+    font-family: consolas;
+    font-size: large;
+
+    background: rgb(0, 0, 0);
+
+    border: 2px solid rgb(30, 30, 30);
+    border-radius: 100px;
+
+    outline: none;
+
+    transition: border-radius 150ms;
+}   
+
+.quick_search:hover {
+    border-color: rgb(70, 70, 70);
+}
+
+.quick_search:not(:placeholder-shown) {
+
+    border-color: rgb(74, 201, 220);
+}

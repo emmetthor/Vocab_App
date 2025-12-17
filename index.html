@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocab App</title>
+
+    <link rel="stylesheet" href="css/app_container.css">
+    <link rel="stylesheet" href="css/side_bar.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/head_bar.css">
+    <link rel="stylesheet" href="css/page.css">
+    <link rel="stylesheet" href="css/main_page.css">
+</head>
+<body style="margin: 0;">
+    <div class="app_container">
+
+        <!--左側導覽列-->
+        <aside class="side_bar">
+            <!-- <div class="logo">
+            </div> -->
+
+            <nav class="nav">
+                <ul class="nav_list">
+                    <li class="nav_item active" data-page-target="main">
+                        <img src="img/home.svg" alt="icon" class="nav_icon">
+                        <span class="nav_text">主頁</span>
+                    </li>
+                    <li class="nav_item" data-page-target="search">
+                        <img src="img/search.svg" alt="icon" class="nav_icon">
+                        <span class="nav_text">搜尋</span>
+                    </li>
+                    <li class="nav_item" data-page-target="add">
+                        <img src="img/add.svg" alt="icon" class="nav_icon">
+                        <span class="nav_text">新增</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!--右側內容-->
+        <main class="main">
+            <!--上方導覽列-->
+            <header class="head_bar">
+                <span class="title">Vocabulary App</span>
+
+                <input type="text" class="quick_search" placeholder="快速搜尋單字">
+                <!-- <div id="quick_search-list"></div> -->
+            </header>
+
+            <!--主頁-->
+            <section id="page-main" class="main_page page">
+                <div id="new_added" class="main_card">
+                    <span class="main_card-text">最近新增</span>
+                    <div id="new_added-list"></div>
+                </div>
+
+                <div id="progress" class="main_card">
+                    <span class="main_card-text">總輸入單字個數</span>
+                    <span id="progress-count-number" class="progress-count-number">0個</span>
+                    <div id="progress-bar"></div>
+                </div>
+
+                <div id="day_cnt" class="main_card">
+                    <span class="main_card-text">學習天數</span>
+                    <span class="study_days">0天</span>
+                </div>
+            </section>
+
+            <!--搜尋頁面-->
+            <section id="page-search" class="page">
+                <input type="text" id="search-input" placeholder="輸入要搜尋的字或字義">
+                <div id="search-result"></div>
+            </section>
+
+            <!--新增頁面-->
+            <section id="page-add" class="page">
+                <div id="add_inputs">
+                    <input type="text" id="add-vocab" placeholder="單字 如 apple">
+                    <input type="text" id="add-meaning" placeholder="字義 如 蘋果">
+                </div>
+                <button id="confirm-send">確認加入單字</button>
+            </section>
+
+        </main>
+    </div>
+    
+    <script src="js/switch_page.js"></script>
+</body>
+</html>
