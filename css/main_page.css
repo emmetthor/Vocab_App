@@ -14,13 +14,13 @@
 
     padding: 1%;
 
-    transition: all 200ms ease;
+    transition: transform 200ms ease;
 }
 
 .main_card:hover {
     background-color: rgb(100, 100, 100);
 
-    transform: rotateY(180deg);
+    transform: scale(1.02);
 }
 
 .main_card-text {
