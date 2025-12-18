@@ -1,0 +1,44 @@
+#debug-panel {
+  position: fixed;           /* 脫離版面 */
+  top: 20px;
+  right: 20px;
+  width: 320px;
+  height: 240px;
+
+  background: rgba(20, 20, 20, 0.95);
+  color: #00ff9c;
+
+  font-family: monospace;
+  font-size: 12px;
+
+  border: 1px solid #00ff9c;
+  border-radius: 6px;
+
+  z-index: 999999;           /* 壓過一切 */
+  box-shadow: 0 0 10px #00ff9c55;
+}
+
+#debug-header {
+  cursor: move;              /* 拖曳手把 */
+  padding: 6px 8px;
+  background: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+#debug-body {
+  height: calc(100% - 30px);
+  overflow-y: auto;
+  padding: 6px;
+}
+
+#debug-log {
+  white-space: pre-wrap;
+}
+
+#debug-minimize {
+    background: #222;
+    color: white;
+}
