@@ -29,13 +29,19 @@
 }
 
 #debug-body {
-  height: calc(100% - 30px);
-  overflow-y: auto;
+  height: calc(100% - 50px);
+  overflow: hidden; 
   padding: 6px;
 }
 
 #debug-log {
+  height: 100%;
+
   white-space: pre-wrap;
+
+  overflow-y: auto;
+
+  margin: 0;
 }
 
 #debug-minimize {
