@@ -22,16 +22,28 @@ document.addEventListener("mouseup", () => {
     isDragging = false;
 });
 
-let log_length = 1;
-
-function debug(module, ...messages) {
+function write_log(level, ...messages) {
   const log = document.getElementById("debug-log");
 
   const line = document.createElement("div");
-  line.textContent = `${log_length++}. [${module}] ${messages.join(" ")}`;
+
+  line.classList.add("debug_line", `debug-${level}`);
+  line.textContent = `${[level]} ${messages.join(" ")}`;
+
   log.appendChild(line);
 
   // 滾到底
   log.scrollTop = log.scrollHeight;
 }
-export const debug_log = {debug};
+
+export const D = {
+    info(...messages) {
+        write_log("INFO", ...messages);
+    },
+    warn(...messages) {
+        write_log("WARN", ...messages);
+    },
+    error(...messages) {
+        write_log("ERROR", ...messages);
+    }
+}

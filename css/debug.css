@@ -48,3 +48,15 @@
     background: #222;
     color: white;
 }
+
+.debug-INFO {
+  color: #00ff9c;
+}
+
+.debug-WARN {
+  color: #ffd166;
+}
+
+.debug-ERROR {
+  color: #ff5c5c;
+}
