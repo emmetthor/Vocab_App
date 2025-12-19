@@ -38,6 +38,11 @@
     letter-spacing: 0.3px;
 }
 
+.quick_search_container {
+    position: relative;
+    height: 100%;
+}
+
 .quick_search {
     height: 70%;
 
@@ -63,6 +68,11 @@
 }
 
 .quick_search:not(:placeholder-shown) {
-
     border-color: rgb(74, 201, 220);
+}
+
+.quick_search-list {
+    position: absolute;
+    padding: 5px 20px;
+    top: 100%;
 }

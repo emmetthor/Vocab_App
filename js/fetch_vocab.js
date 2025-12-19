@@ -1,5 +1,15 @@
+/*
+抓取在 github 上的單字
+
+- dedupe_vocab 去重
+- fetch_vocab 抓取主程式
+- render_vocab 刷新頁面 [TODO]
+
+*/
+
 import SETTINGS from "./settings.js";
-import { D } from "./debug.js"
+import { D } from "./debug.js";
+import { set_vocab } from "./data.js";
 
 const FETCH_URL = "https://raw.githubusercontent.com/emmetthor/Vocab_App/refs/heads/main/vocab.json";
 
@@ -19,7 +29,7 @@ function dedupe_vocab(vocab_list) {
     return res;
 }
 
-async function fetch_vocab() {
+export async function fetch_vocab() {
     D.info("start fetching");
     try {
         const response = await fetch(FETCH_URL);
@@ -29,9 +39,15 @@ async function fetch_vocab() {
 
         const dedupe_vocab_list = dedupe_vocab(vocab_list);
 
-        render_vocab(dedupe_vocab_list);
+        //D.info("is dedupe_vocab_list a array?", Array.isArray(dedupe_vocab_list));
+
+        //render_vocab(dedupe_vocab_list);
+
+        D.info("fetch successful")
+
+        return dedupe_vocab_list;
     } catch (err) {
-        debug_log.error("Failed to fetch vocab: ", err);
+        D.error("Failed to fetch vocab: ", err);
     }
 }
 

@@ -28,7 +28,7 @@ function write_log(level, ...messages) {
   const line = document.createElement("div");
 
   line.classList.add("debug_line", `debug-${level}`);
-  line.textContent = `${[level]} ${messages.join(" ")}`;
+  line.textContent = `[${level}] ${messages.join(" ")}`;
 
   log.appendChild(line);
 
