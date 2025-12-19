@@ -67,8 +67,8 @@ async function render_vocab(vocab_list) {
     });
 }
 
-const test_btn = document.getElementById("test_btn");
+// const test_btn = document.getElementById("test_btn");
 
-test_btn.addEventListener("click", () => {
-    fetch_vocab()
-});
+// test_btn.addEventListener("click", () => {
+//     fetch_vocab()
+// });
