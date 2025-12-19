@@ -14,6 +14,7 @@ async function init() {
 } init();
 
 const quick_search_list = document.querySelector(".quick_search-list");
+const quick_search_input = document.querySelector(".quick_search");
 
 document.getElementById("quick_search")
 .addEventListener("input", e => {
@@ -23,10 +24,11 @@ document.getElementById("quick_search")
 
     //D.info("length of simular_list", simular_list.length);
 
-    if (simular_list.length !== 0)
+    if (simular_list.length !== 0) {
         quick_search_list.style.display = 'block';
-    else
+    } else {
         quick_search_list.style.display = 'none';
+    }
 
 
     const container = document.getElementById("quick_search-list");
