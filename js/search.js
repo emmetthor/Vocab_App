@@ -4,9 +4,11 @@ import { D } from "./debug.js";
 export function quick_search(keyword) {
     //D.info("is vocab_list a array", Array.isArray(vocab_list));
 
+    if (!keyword) return [];
+
     const key = keyword.toLowerCase();
 
-    if (!key) return;
+    if (!key) return [];
 
     const res = vocab_list.filter(v =>
         v.word.toLowerCase().includes(key)
