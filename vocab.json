@@ -1,4 +1,5 @@
-{
+[
+  {
     "word": "bank",
     "pos": "noun",
     "definition": "a financial institution",
@@ -16,7 +17,6 @@
     "definition": "to rely on",
     "example": "You can bank on her support."
   },
-
   {
     "word": "run",
     "pos": "verb",
@@ -35,7 +35,6 @@
     "definition": "a period of operation",
     "example": "The machine had a long run."
   },
-
   {
     "word": "light",
     "pos": "noun",
@@ -60,4 +59,5 @@
     "pos": "noun",
     "definition": "a financial institution",
     "example": "I deposited money in the bank."
-}
+  }
+]
