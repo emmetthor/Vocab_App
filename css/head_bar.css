@@ -50,7 +50,7 @@
     background: rgb(0, 0, 0);
 
     border: 2px solid rgb(30, 30, 30);
-    border-radius: 100px;
+    border-radius: 20px;
 
     outline: none;
 }   
@@ -64,8 +64,21 @@
 }
 
 .quick_search.open {
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 20px 20px 0px 0px;
     border-bottom: none;
+}
+
+.quick_search.shake {
+    animation: shake 300ms;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(2px); }
+    60% { transform: translateX(-1px); }
+    80% { transform: translateX(1px); }
+    100% { transform: translateX(0);}
 }
 
 .quick_search-list {
@@ -86,7 +99,7 @@
     border-left: 2px solid rgb(74, 201, 220);
     border-right: 2px solid rgb(74, 201, 220);
     border-bottom: 2px solid rgb(74, 201, 220);
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 20px 20px;
 
     font-size: large;
     font-family: consolas;
