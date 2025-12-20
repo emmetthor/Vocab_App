@@ -53,8 +53,6 @@
     border-radius: 100px;
 
     outline: none;
-
-    transition: border-radius 150ms;
 }   
 
 .quick_search:hover {
@@ -65,6 +63,11 @@
     border-color: rgb(74, 201, 220);
 }
 
+.quick_search.open {
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: none;
+}
+
 .quick_search-list {
     display: none;
 
@@ -72,13 +75,21 @@
     padding: 5px 20px;
     top: 100%;
 
+    width: 100%;
+    box-sizing: border-box;
+
     border-top: none;
 
     background: rgb(0, 0, 0);
-    color: aliceblue;
+    color: rgb(205, 215, 224);
 
-    border: 2px solid rgb(74, 201, 220);
-    border-radius: 10px;
+    border-left: 2px solid rgb(74, 201, 220);
+    border-right: 2px solid rgb(74, 201, 220);
+    border-bottom: 2px solid rgb(74, 201, 220);
+    border-radius: 0px 0px 10px 10px;
+
+    font-size: large;
+    font-family: consolas;
 
     z-index: 10;
 }
