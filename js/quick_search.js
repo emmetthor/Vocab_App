@@ -57,7 +57,7 @@ quick_search_input.addEventListener("input", e => {
 });
 
 quick_search_input.addEventListener("focus", () => {
-    D.info("simular_list.length", simular_list.length);
+    //D.info("simular_list.length", simular_list.length);
 
     if (simular_list.length !== 0) {
         change_quick_search_style('open');
