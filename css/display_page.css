@@ -1,0 +1,44 @@
+.display_page {
+    height: calc(100% - 100px);
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.word_display {
+    display: flex;
+
+    font-family: consolas;
+    color: aliceblue;
+
+    border: 2px solid rgb(70, 70, 70);
+    border-radius: 20px;
+
+    padding: 5%;
+    
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.display-word {
+    font-size: xx-large;
+    
+    font-weight: bold;
+    
+
+    padding: 10%;
+
+    background: linear-gradient(90deg, rgb(74, 201, 220), rgb(118, 74, 220));
+
+    border-radius: 100px;
+}
+
+.display-line {
+    font-size: large;
+}
+
+.tip_word {
+    font-size: medium;
+}

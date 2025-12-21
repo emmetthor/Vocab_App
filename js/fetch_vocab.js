@@ -7,9 +7,7 @@
 
 */
 
-import SETTINGS from "./settings.js";
 import { D } from "./debug.js";
-import { set_vocab } from "./data.js";
 
 const FETCH_URL = "https://raw.githubusercontent.com/emmetthor/Vocab_App/refs/heads/main/vocab.json";
 

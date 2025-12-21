@@ -1,10 +1,12 @@
 const pageItems = document.querySelectorAll(".page");
 const navItems = document.querySelectorAll(".nav_item");
 
-function show_page(name) {
+export function show_page(name) {
     pageItems.forEach(page => {
         page.classList.toggle("active", page.id === "page-" + name);
     });
+
+    if (name == "diaplay") return;
 
     navItems.forEach(btn => {
         btn.classList.toggle("active", btn.dataset.pageTarget === name);

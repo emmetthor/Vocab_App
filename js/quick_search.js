@@ -1,4 +1,5 @@
 import { D } from "./debug.js";
+import { set_display_word } from "./display_word.js";
 import { quick_search } from "./search.js";
 
 const quick_search_list = document.querySelector(".quick_search-list");
@@ -6,6 +7,9 @@ const quick_search_input = document.querySelector(".quick_search");
 
 let simular_list = [];
 
+const wordMap = new Map();
+
+// 改變 quick_search 的 css 樣式
 function change_quick_search_style(type) {
     if (type === 'open') {
         quick_search_input.style.borderColor = 'rgb(74, 201, 220)';
@@ -28,6 +32,7 @@ function change_quick_search_style(type) {
     }
 }
 
+// 偵測輸入顯示推薦單字
 quick_search_input.addEventListener("input", e => {
     //D.info("current input", e.target.value);
 
@@ -51,11 +56,17 @@ quick_search_input.addEventListener("input", e => {
 
     simular_list.forEach (v => {
         const div = document.createElement('div');
+
         div.textContent = v.word;
+        div.classList.add('suggest_word');
+        
+        wordMap.set(div, v);
+
         container.appendChild(div);
     });
 });
 
+// 調整 focus css 樣式
 quick_search_input.addEventListener("focus", () => {
     //D.info("simular_list.length", simular_list.length);
 
@@ -66,6 +77,15 @@ quick_search_input.addEventListener("focus", () => {
 
 quick_search_input.addEventListener("blur", () => {
     //setTimeOut?
+    //change_quick_search_style('close');
+});
 
-    change_quick_search_style('close');
+quick_search_list.addEventListener("click", e => {
+    if (!e.target.classList.contains("suggest_word")) return;
+
+    const wordObj = wordMap.get(e.target);
+
+    D.info("quick_search word:", wordObj.word);
+
+    set_display_word(wordObj);
 });

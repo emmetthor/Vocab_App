@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/page.css">
     <link rel="stylesheet" href="css/main_page.css">
     <link rel="stylesheet" href="css/debug.css">
+    <link rel="stylesheet" href="css/display_page.css">
 </head>
 <body style="margin: 0;">
     <div class="app_container">
@@ -80,11 +81,24 @@
             <section id="page-add" class="page">
                 <div id="add_inputs">
                     <input type="text" id="add-vocab" placeholder="單字 如 apple">
-                    <input type="text" id="add-meaning" placeholder="字義 如 蘋果">
+                    <input type="text" id="add-definition" placeholder="字義 如 蘋果">
                 </div>
                 <button id="confirm-send">確認加入單字</button>
             </section>
 
+            <section id="page-display" class="display_page page">
+                <div class="word_display">
+                    <span id="display-word" class="display-word"></span>
+                    <div class="display-line">
+                        <span class="tip_word">[意思]</span>
+                        <span id="display-definition"></span>
+                    </div>
+                    <div class="display-line">
+                        <span class="tip_word">[例句]</span>
+                        <span id="display-example"></span>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
