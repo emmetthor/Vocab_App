@@ -20,19 +20,50 @@
     flex-direction: column;
 
     gap: 20px;
+
+    max-width: 700px;
+
+    transition: transform 200ms;
+
+    z-index: 0;
 }
 
 .display-word {
+    display: flex;
+    position: relative;
+
+    justify-content: center;
+    align-items: center;
+
     font-size: xx-large;
-    
     font-weight: bold;
     
-
     padding: 10%;
 
-    background: linear-gradient(90deg, rgb(74, 201, 220), rgb(118, 74, 220));
+    background-color: rgb(30, 30, 30);
 
     border-radius: 100px;
+}
+
+.display-word::after {
+    content: '';
+
+    position: absolute;
+
+    background: linear-gradient(135deg, rgb(74, 201, 220), rgb(147, 74, 220));
+
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+
+    border-radius: 100px;
+
+    z-index: -1;
+}
+
+.word_display:hover {
+    transform: scale(1.05);
+
+    box-shadow: 5em 0 10em rgb(74, 98, 220), -5em 0 110em rgb(149, 74, 220);
 }
 
 .display-line {
