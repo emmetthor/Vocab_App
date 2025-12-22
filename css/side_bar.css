@@ -5,6 +5,10 @@
     background: rgb(0, 0, 0);
 
     height: 100%;      /* 僅占第二列的高度 */
+
+    display: flex;
+
+    flex-direction: column;
 }
 
 .logo {
@@ -59,4 +63,14 @@
 .nav_text {
     font-size: medium;
     color: white;
+}
+
+.toggle_debug {
+    color: aliceblue;
+    background-color: transparent;
+    margin-top: auto;
+}
+
+.toggle_debug_box {
+    outline: none;
 }

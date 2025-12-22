@@ -1,5 +1,6 @@
 const panel = document.getElementById("debug-panel");
 const header = document.getElementById("debug-header");
+const checkbox = document.getElementById("toggle_debug_box");
 
 let isDragging = false;
 let offsetX = 0;
@@ -47,3 +48,8 @@ export const D = {
         write_log("ERROR", ...messages);
     }
 }
+
+checkbox.addEventListener("change", () => {
+    if (checkbox.checked) panel.style.display = 'none';
+    else panel.style.display = 'block';
+});

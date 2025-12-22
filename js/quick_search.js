@@ -9,6 +9,8 @@ let simular_list = [];
 
 const wordMap = new Map();
 
+let hideTimer = null;
+
 // 改變 quick_search 的 css 樣式
 function change_quick_search_style(type) {
     if (type === 'open') {
@@ -21,6 +23,7 @@ function change_quick_search_style(type) {
         
         quick_search_list.style.display = 'none';
         quick_search_input.classList.remove('open');
+
     } else if (type === 'no_result') {
         quick_search_input.style.borderColor = 'rgb(220, 74, 74)';
 
@@ -73,11 +76,8 @@ quick_search_input.addEventListener("focus", () => {
     if (simular_list.length !== 0) {
         change_quick_search_style('open');
     }
-});
 
-quick_search_input.addEventListener("blur", () => {
-    //setTimeOut?
-    //change_quick_search_style('close');
+    clearTimeout(hideTimer);
 });
 
 quick_search_list.addEventListener("click", e => {
@@ -88,4 +88,14 @@ quick_search_list.addEventListener("click", e => {
     D.info("quick_search word:", wordObj.word);
 
     set_display_word(wordObj);
+
+    change_quick_search_style('close');
+
+    quick_search_input.value = '';
+});
+
+quick_search_input.addEventListener("blur", () => {
+    hideTimer = setTimeout(() => {
+        change_quick_search_style('close');
+    }, 100);
 });
