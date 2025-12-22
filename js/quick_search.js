@@ -4,12 +4,28 @@ import { quick_search } from "./search.js";
 
 const quick_search_list = document.querySelector(".quick_search-list");
 const quick_search_input = document.querySelector(".quick_search");
+const container = document.getElementById("quick_search-list");
 
 let simular_list = [];
 
 const wordMap = new Map();
 
 let hideTimer = null;
+
+function render_suggest_list() {
+    container.innerHTML = '';
+
+    simular_list.forEach (v => {
+        const div = document.createElement('div');
+
+        div.textContent = v.word;
+        div.classList.add('suggest_word');
+        
+        wordMap.set(div, v);
+
+        container.appendChild(div);
+    });
+}
 
 // 改變 quick_search 的 css 樣式
 function change_quick_search_style(type) {
@@ -52,21 +68,7 @@ quick_search_input.addEventListener("input", e => {
             change_quick_search_style('no_result');
     }
 
-
-    const container = document.getElementById("quick_search-list");
-
-    container.innerHTML = '';
-
-    simular_list.forEach (v => {
-        const div = document.createElement('div');
-
-        div.textContent = v.word;
-        div.classList.add('suggest_word');
-        
-        wordMap.set(div, v);
-
-        container.appendChild(div);
-    });
+    render_suggest_list();
 });
 
 // 調整 focus css 樣式
@@ -92,6 +94,9 @@ quick_search_list.addEventListener("click", e => {
     change_quick_search_style('close');
 
     quick_search_input.value = '';
+
+    simular_list = [];
+    render_suggest_list();
 });
 
 quick_search_input.addEventListener("blur", () => {
