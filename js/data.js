@@ -5,6 +5,8 @@ export let vocab_list = [];
 
 export function set_vocab(data) {
     vocab_list = data;
+
+    save_to_local();
 }
 
 export function dedupe_vocab(_vocab_list) {
@@ -83,5 +85,4 @@ async function init_vocab() {
     const local_vocab_list = load_from_local();
 
     set_vocab(merge_vocab_lists(git_vocab_list, local_vocab_list));
-
 } init_vocab();

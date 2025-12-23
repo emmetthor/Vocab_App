@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/main_page.css">
     <link rel="stylesheet" href="css/debug.css">
     <link rel="stylesheet" href="css/display_page.css">
+    <link rel="stylesheet" href="css/add_page.css">
 </head>
 <body style="margin: 0;">
     <div class="app_container">
@@ -85,11 +86,11 @@
             </section>
 
             <!--新增頁面-->
-            <section id="page-add" class="page">
-                <div id="add_inputs">
-                    <input type="text" id="add-vocab" placeholder="單字 如 apple">
+            <section id="page-add" class="page add_page">
+                <div id="add_inputs" class="add_inputs">
+                    <input type="text" id="add-vocab" placeholder="單字 如 apple" class="add_input">
                     
-                    <select id="add-pos">
+                    <select id="add-pos"  class="add_input">
                         <option value="n.">名詞</option>
                         <option value="v.">動詞</option>
                         <option value="adj.">形容詞</option>
@@ -100,11 +101,11 @@
                         <option value="idi.">諺語</option>
                     </select>
 
-                    <input type="text" id="add-definition" placeholder="字義 如 蘋果">
-                    <input type="text" id="add-example" placeholder="例句 如 This is an apple.">
-                    <input type="text" id="confirm_vocab" placeholder="確認單字">
+                    <input type="text" id="add-definition" placeholder="字義 如 蘋果"  class="add_input">
+                    <input type="text" id="add-example" placeholder="例句 如 This is an apple."  class="add_input">
+                    <input type="text" id="confirm_vocab" placeholder="確認單字"  class="add_input">
                 </div>
-                <div id="confirm-send">確認加入單字</div>
+                <div id="confirm-send" class="add_input_btn">確認加入單字</div>
             </section>
 
             <section id="page-display" class="display_page page">

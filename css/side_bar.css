@@ -54,6 +54,10 @@
     transition: border 100ms ease;
 }
 
+.nav_item:not(.nav_item.active):hover .nav_text {
+    color: rgb(74, 201, 220);
+}
+
 .nav_item.active {
     background: linear-gradient(90deg, rgb(80, 80, 80), transparent);
 
