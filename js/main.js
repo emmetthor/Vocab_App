@@ -5,10 +5,5 @@ import "./data.js";
 import "./search.js";
 import "./quick_search.js";
 import "./display_word.js";
-import { fetch_vocab } from "./fetch_vocab.js";
-import { set_vocab } from "./data.js";
-
-async function init() {
-    const vocab_list = await fetch_vocab();
-    set_vocab(vocab_list);
-} init();
+import "./add_vocab.js";
+import "./config.js"

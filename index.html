@@ -51,6 +51,8 @@
             <header class="head_bar">
                 <span class="title">Vocabulary App</span>
 
+                <button id="test_btn">測試用 button</button>
+
                 <div class="quick_search_container">
                     <input type="text" id="quick_search" class="quick_search" placeholder="快速搜尋單字" autocomplete="off">
                     <div id="quick_search-list" class="quick_search-list" tabindex="-1"></div>
@@ -86,9 +88,23 @@
             <section id="page-add" class="page">
                 <div id="add_inputs">
                     <input type="text" id="add-vocab" placeholder="單字 如 apple">
+                    
+                    <select id="add-pos">
+                        <option value="n.">名詞</option>
+                        <option value="v.">動詞</option>
+                        <option value="adj.">形容詞</option>
+                        <option value="adv.">副詞</option>
+                        <option value="prep.">介係詞</option>
+                        <option value="conj.">連接詞</option>
+                        <option value="phr.">片語</option>
+                        <option value="idi.">諺語</option>
+                    </select>
+
                     <input type="text" id="add-definition" placeholder="字義 如 蘋果">
+                    <input type="text" id="add-example" placeholder="例句 如 This is an apple.">
+                    <input type="text" id="confirm_vocab" placeholder="確認單字">
                 </div>
-                <button id="confirm-send">確認加入單字</button>
+                <div id="confirm-send">確認加入單字</div>
             </section>
 
             <section id="page-display" class="display_page page">

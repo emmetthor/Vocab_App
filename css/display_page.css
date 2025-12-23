@@ -62,8 +62,6 @@
 
 .word_display:hover {
     transform: scale(1.05);
-
-    box-shadow: 5em 0 10em rgb(74, 98, 220), -5em 0 110em rgb(149, 74, 220);
 }
 
 .display-line {

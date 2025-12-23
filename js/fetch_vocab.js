@@ -7,25 +7,10 @@
 
 */
 
+
+import { FETCH_URL } from "./config.js";
+import { dedupe_vocab } from "./data.js";
 import { D } from "./debug.js";
-
-const FETCH_URL = "https://raw.githubusercontent.com/emmetthor/Vocab_App/refs/heads/main/vocab.json";
-
-function dedupe_vocab(vocab_list) {
-    const visi = new Set();
-    const res = [];
-
-    for (const v of vocab_list) {
-        const key = `${v.word}|${v.pos}|${v.example}`;
-
-        if (!visi.has(key)) {
-            visi.add(key);
-            res.push(v);
-        }
-    }
-
-    return res;
-}
 
 export async function fetch_vocab() {
     D.info("start fetching");
