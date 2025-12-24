@@ -11,4 +11,4 @@ export default async function test_token() {
     } else {
         D.info("token:", TOKEN.slice(0, 5) + "...");
     }
-}
+} test_token();
