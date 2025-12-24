@@ -10,6 +10,11 @@ export function set_vocab(data) {
 }
 
 export function dedupe_vocab(_vocab_list) {
+    if (!Array.isArray(_vocab_list)) {
+        D.error("Invalid _vocab_list", _vocab_list);
+        return [];
+    }
+    
     const visi = new Set();
     const res = [];
 
