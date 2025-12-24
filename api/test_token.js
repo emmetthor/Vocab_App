@@ -1,9 +1,10 @@
-export default async function test_token() {
-    const TOKEN = process.env.GITHUB_TOKEN;
-
-    if (!TOKEN) {
-        D.error("can't get GITHUB_TOKEN");
-    } else {
-        D.info("token:", TOKEN.slice(0, 5) + "...");
+export default function handler(req, res) {
+    const token = process.env.GITHUB_TOKEN;
+    if (!token) {
+        return res.status(400).json({ message: "Token not found" });
     }
-} test_token();
+    res.status(200).json({
+        message: "Token exists",
+        token_preview: token.slice(0, 5) + "..."
+    });
+}
