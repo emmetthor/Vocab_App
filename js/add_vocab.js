@@ -29,8 +29,13 @@ function get_new_vocab() {
 }
 
 function isValid(vocab) {
+    const pos = {
+        "file": "add_vocab",
+        "func": "isValid"
+    };
+
     if (!vocab.word) {
-        D.error("invalid word", vocab.word);
+        D.error("Invalid word:", vocab.word, "at: ", pos);
         return 'invalid';
     }
 

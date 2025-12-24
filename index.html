@@ -40,10 +40,7 @@
                 </ul>
             </nav>
 
-            <div class="toggle_debug">
-                <input type="checkbox" id="toggle_debug_box" class="toggle_debug_box">
-                <span class="toggle_debug_text"> hide debug? </span>
-            </div>
+            <button id="toggle-log">Toggle</button>
         </aside>
 
         <!--右側內容-->
@@ -124,15 +121,13 @@
         </main>
     </div>
 
-    <div id="debug-panel">
-        <div id="debug-header">
-            <span>DEBUG</span>
-            <button id="debug-minimize">_</button>
+    <!-- 側邊 Log Panel -->
+    <div id="log-panel" class="closed">
+        <div id="log-header">
+            <span>Logs</span>
+            
         </div>
-
-        <div id="debug-body">
-            <pre id="debug-log"></pre>
-        </div>
+        <div id="log-body"></div>
     </div>
     
     <script type="module" src="./js/main.js"></script>

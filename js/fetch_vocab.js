@@ -13,7 +13,8 @@ import { dedupe_vocab } from "./data.js";
 import { D } from "./debug.js";
 
 export async function fetch_vocab() {
-    D.info("start fetching");
+
+    D.info("Start fetching...");
     try {
         const response = await fetch(FETCH_URL);
         if (!response.ok) throw new Error('Network response failed');
@@ -26,11 +27,11 @@ export async function fetch_vocab() {
 
         //render_vocab(dedupe_vocab_list);
 
-        D.info("fetch successful")
+        D.info("Fetch successful");
 
         return dedupe_vocab_list;
     } catch (err) {
-        D.error("Failed to fetch vocab: ", err);
+        D.info("Failed to fetch vocab:", err);
     }
 }
 

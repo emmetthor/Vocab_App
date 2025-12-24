@@ -1,55 +1,31 @@
-const panel = document.getElementById("debug-panel");
-const header = document.getElementById("debug-header");
-const checkbox = document.getElementById("toggle_debug_box");
+const logPanel = document.getElementById('log-panel');
+const toggleBtn = document.getElementById('toggle-log');
+const clearBtn = document.getElementById('clear-log');
+const logBody = document.getElementById('log-body');
 
-let isDragging = false;
-let offsetX = 0;
-let offsetY = 0;
-
-header.addEventListener("mousedown", (e) => {
-    isDragging = true;
-    offsetX = e.clientX - panel.offsetLeft;
-    offsetY = e.clientY - panel.offsetTop;
+toggleBtn.addEventListener('click', () => {
+  logPanel.classList.toggle('open');
 });
 
-document.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
-    panel.style.left = e.clientX - offsetX + "px";
-    panel.style.top = e.clientY - offsetY + "px";
-    panel.style.right = "auto";   // 防止 fixed right 干擾
-});
+function addLog(level, ...msg) {
+    const entry = document.createElement('div');
+    entry.classList.add('log-entry', `log-${level}`);
 
-document.addEventListener("mouseup", () => {
-    isDragging = false;
-});
+    const time = new Date().toLocaleTimeString();
 
-function write_log(level, ...messages) {
-  const log = document.getElementById("debug-log");
+    const content = `[${level.toUpperCase()}] ` + msg.map(m => {
+        if (typeof m === 'object') return JSON.stringify(m);
+        return m;
+    }).join(' ');
 
-  const line = document.createElement("div");
-
-  line.classList.add("debug_line", `debug-${level}`);
-  line.textContent = `[${level}] ${messages.join(" ")}`;
-
-  log.appendChild(line);
-
-  // 滾到底
-  log.scrollTop = log.scrollHeight;
+    entry.textContent = content;
+    logBody.appendChild(entry);
+    logBody.scrollTop = logBody.scrollHeight;
 }
 
 export const D = {
-    info(...messages) {
-        write_log("INFO", ...messages);
-    },
-    warn(...messages) {
-        write_log("WARN", ...messages);
-    },
-    error(...messages) {
-        write_log("ERROR", ...messages);
-    }
-}
-
-checkbox.addEventListener("change", () => {
-    if (checkbox.checked) panel.style.display = 'none';
-    else panel.style.display = 'block';
-});
+    debug: (...msg) => addLog('DEBUG', ...msg),
+    info: (...msg) => addLog('INFO_', ...msg),
+    warn: (...msg) => addLog('WARN_', ...msg),
+    error: (...msg) => addLog('ERROR', ...msg)
+};

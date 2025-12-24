@@ -1,62 +1,65 @@
-#debug-panel {
-  position: fixed;           /* 脫離版面 */
-  top: 20px;
-  right: 20px;
-  width: 320px;
-  height: 240px;
-
-  background: rgba(20, 20, 20, 0.95);
-  color: #00ff9c;
-
-  font-family: monospace;
-  font-size: 12px;
-
-  border: 1px solid #00ff9c;
-  border-radius: 6px;
-
-  z-index: 999999;           /* 壓過一切 */
-  box-shadow: 0 0 10px #00ff9c55;
+#log-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 700px;
+  height: 100%;
+  background: #1e1e1e;
+  color: #fff;
+  font-family: consolas;
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  z-index: 9999;
 }
 
-#debug-header {
-  cursor: move;              /* 拖曳手把 */
-  padding: 6px 8px;
-  background: #111;
+#log-panel.open {
+  transform: translateX(0);
+}
+
+#log-header {
+  padding: 10px;
+  background: #333;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  user-select: none;
 }
 
-#debug-body {
-  height: calc(100% - 50px);
-  overflow: hidden; 
-  padding: 6px;
+#log-body {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;     /* 垂直捲動 */
+  overflow-x: auto;   /* 不要水平捲動 */
 }
 
-#debug-log {
-  height: 100%;
-
-  white-space: pre-wrap;
-
-  overflow-y: auto;
-
-  margin: 0;
+.log-entry {
+  margin-bottom: 5px;
+  white-space: nowrap;
 }
 
-#debug-minimize {
-    background: #222;
-    color: white;
+.log-info { color: #9cdcfe; }
+.log-warn { color: #f9f1a5; }
+.log-error { color: #f48771; }
+
+.log-INFO_ {
+  color: #51ce9e;
 }
 
-.debug-INFO {
-  color: #00ff9c;
-}
-
-.debug-WARN {
+.log-WARN_ {
   color: #ffd166;
+  background-color: #4a2c11;
+  font-weight: bold;
 }
 
-.debug-ERROR {
-  color: #ff5c5c;
+.log-ERROR {
+  color: #ff6666;
+  background-color: #4a1111;
+  font-weight: bold;
+}
+
+.log-DEBUG {
+  color: #c8c8c8;
 }
