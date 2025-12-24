@@ -8,4 +8,3 @@ import "./display_word.js";
 import "./add_vocab.js";
 import "./config.js";
 import "./sync.js";
-import "../api/test_token.js";
