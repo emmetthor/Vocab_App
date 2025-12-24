@@ -11,6 +11,12 @@ export default async function handler(req, res) {
 
     const [owner, repoName] = repo.split("/");
 
+    const { vocab_list } = req.body;
+
+    if (!vocab_list) {
+      return res.status(400).json({ message: "No vocab_list provided" });
+    }
+
     // 1️⃣ 取得檔案 SHA（用於更新）
     let sha;
     const getRes = await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/${path}`, {
@@ -22,7 +28,7 @@ export default async function handler(req, res) {
     }
 
     // 2️⃣ 更新檔案
-    const content = Buffer.from(JSON.stringify({ date: new Date().toISOString() })).toString("base64");
+    const content = Buffer.from(JSON.stringify({ vocab_list })).toString("base64");
     const putRes = await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/${path}`, {
       method: "PUT",
       headers: {

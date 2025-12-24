@@ -1,10 +1,15 @@
 import { D } from "./debug.js";
 
+import { vocab_list } from "./data.js"
+
 async function pushVocab() {
     try {
-        const res = await fetch("/api/git_push", { method: "POST" });
-        const data = await res.json();
-        console.log(data);
+        const res = await fetch("/api/git_push", {
+            method: "POST",
+            body: JSON.stringify({ vocab_list:  vocab_list})
+        });
+        const ret = await res.json();
+        console.log(ret);
     } catch (err) {
         console.error(err);
     }
