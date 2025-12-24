@@ -6,7 +6,7 @@ export const API_URL = "https://api.github.com/repos/Emmetthor/Vocab_App/commits
 async function testToken() {
   const res = await fetch("/api/test_token"); // 呼叫 Serverless Function
   const data = await res.json();
-  console.log(data);
+  D.info(data[0], data[1]);
 }
 
 testToken();
