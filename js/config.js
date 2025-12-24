@@ -1,4 +1,3 @@
-import test_token from "../api/test_token.js";
 import { D } from "./debug.js";
 
 export const FETCH_URL = "https://raw.githubusercontent.com/emmetthor/Vocab_App/refs/heads/main/vocab.json";
