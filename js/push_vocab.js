@@ -1,4 +1,4 @@
-import { D } from "./debug";
+import { D } from "./debug.js";
 
 async function pushVocab() {
   try {
