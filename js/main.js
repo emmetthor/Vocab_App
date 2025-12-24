@@ -7,3 +7,4 @@ import "./quick_search.js";
 import "./display_word.js";
 import "./add_vocab.js";
 import "./config.js"
+import "./sync.js"
