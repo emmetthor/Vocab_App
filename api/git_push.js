@@ -1,45 +1,43 @@
 // api/git_push.js
-import { Octokit } from "@octokit/rest";
-
 export default async function handler(req, res) {
   try {
     const token = process.env.GITHUB_TOKEN;
     const repo = process.env.GITHUB_REPO; // "emmetthor/Vocab_App"
+    const path = "vocab.json";
 
     if (!token || !repo) {
-      return res.status(400).json({ message: "Token or repo not found" });
+      return res.status(400).json({ message: "Token or repo missing" });
     }
 
     const [owner, repoName] = repo.split("/");
-    const octokit = new Octokit({ auth: token });
 
-    // 1️⃣ 取得檔案 SHA（如果要更新檔案必須知道 SHA）
-    const path = "vocab.json";
+    // 1️⃣ 取得檔案 SHA（用於更新）
     let sha;
-    try {
-      const { data } = await octokit.repos.getContent({
-        owner,
-        repo: repoName,
-        path,
-      });
+    const getRes = await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/${path}`, {
+      headers: { Authorization: `token ${token}` },
+    });
+    if (getRes.status === 200) {
+      const data = await getRes.json();
       sha = data.sha;
-    } catch (err) {
-      // 檔案不存在 → 新增即可
-      sha = undefined;
     }
 
-    // 2️⃣ 更新或新增檔案
+    // 2️⃣ 更新檔案
     const content = Buffer.from(JSON.stringify({ date: new Date().toISOString() })).toString("base64");
-    await octokit.repos.createOrUpdateFileContents({
-      owner,
-      repo: repoName,
-      path,
-      message: "update vocab",
-      content,
-      sha,
+    const putRes = await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/${path}`, {
+      method: "PUT",
+      headers: {
+        Authorization: `token ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: "update vocab",
+        content,
+        sha,
+      }),
     });
 
-    res.status(200).json({ message: "Push success" });
+    const result = await putRes.json();
+    res.status(200).json({ message: "Push success", result });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: err.message });
