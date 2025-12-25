@@ -23,5 +23,3 @@ export async function check_sync(remote_vocab) {
         D.info("SYNCED");
     }
 }
-
-check_sync();

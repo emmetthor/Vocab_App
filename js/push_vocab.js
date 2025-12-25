@@ -21,14 +21,11 @@ async function pushVocab() {
 
         const new_commit = ret.result.commit.sha;
         
-        
-
-        
     } catch (err) {
         D.error(err);
     }
 
-    check_sync();
+    check_sync(vocab_list);
 }
 
 document.getElementById("test_btn").addEventListener("click", async () => {

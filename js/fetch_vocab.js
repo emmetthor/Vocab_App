@@ -11,6 +11,7 @@
 import { FETCH_URL } from "./config.js";
 import { dedupe_vocab } from "./data.js";
 import { D } from "./debug.js";
+import { check_sync } from "./sync.js";
 
 export async function fetch_vocab() {
 
@@ -30,6 +31,7 @@ export async function fetch_vocab() {
             D.info("Fetch ended with warnings");
         } else {
             D.info("Fetch successful");
+            check_sync(dedupe_vocab_list);
         }
 
         //D.info("is dedupe_vocab_list a array?", Array.isArray(dedupe_vocab_list));
