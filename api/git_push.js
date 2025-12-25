@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
     const [owner, repoName] = repo.split("/");
 
-    const { vocab_list } = req.body;
+    const vocab_list = req.body;
 
     if (!vocab_list) {
       return res.status(400).json({ message: "No vocab_list provided" });

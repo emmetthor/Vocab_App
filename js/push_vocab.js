@@ -9,7 +9,7 @@ async function pushVocab() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ vocab_list:  vocab_list})
+            body: JSON.stringify(vocab_list)
         });
         const ret = await res.json();
     } catch (err) {

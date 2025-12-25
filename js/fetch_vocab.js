@@ -20,7 +20,6 @@ export async function fetch_vocab() {
         if (!response.ok) throw new Error('Network response failed');
 
         const vocab_list = await response.json();
-
         const dedupe_vocab_list = dedupe_vocab(vocab_list);
 
         if (dedupe_vocab_list.length === 0) {
