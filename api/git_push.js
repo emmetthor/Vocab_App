@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     }
 
     // 2️⃣ 更新檔案
-    const content = Buffer.from(JSON.stringify({ vocab_list })).toString("base64");
+    const content = Buffer.from(JSON.stringify(vocab_list)).toString("base64");
     const putRes = await fetch(`https://api.github.com/repos/${owner}/${repoName}/contents/${path}`, {
       method: "PUT",
       headers: {
