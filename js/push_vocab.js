@@ -6,6 +6,9 @@ async function pushVocab() {
     try {
         const res = await fetch("/api/git_push", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({ vocab_list:  vocab_list})
         });
         const ret = await res.json();
