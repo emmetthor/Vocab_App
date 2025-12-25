@@ -12,6 +12,7 @@ async function pushVocab() {
             body: JSON.stringify(vocab_list)
         });
         const ret = await res.json();
+        D.info(ret);
     } catch (err) {
         D.error(err);
     }
