@@ -25,6 +25,8 @@ function render_suggest_list() {
 
         container.appendChild(div);
     });
+
+    D.debug(`suggest_list is rendered, in a total of ${simular_list.length} vocabs`);
 }
 
 // 改變 quick_search 的 css 樣式
@@ -47,7 +49,7 @@ function change_quick_search_style(type) {
         void quick_search_input.offsetWidth;
         quick_search_input.classList.add('shake');
     } else {
-        D.error("invalid command of change_quick_search_style", type);
+        D.error("Invalid command of change_quick_search_style", type);
     }
 }
 

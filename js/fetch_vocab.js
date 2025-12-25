@@ -23,15 +23,20 @@ export async function fetch_vocab() {
 
         const dedupe_vocab_list = dedupe_vocab(vocab_list);
 
+        if (dedupe_vocab_list.length === 0) {
+            D.warn("dedupe_vocab_list is empty or invalid. Continued progress");
+        } else {
+            D.info("Fetch successful");
+        }
+
         //D.info("is dedupe_vocab_list a array?", Array.isArray(dedupe_vocab_list));
 
         //render_vocab(dedupe_vocab_list);
 
-        D.info("Fetch successful");
-
         return dedupe_vocab_list;
     } catch (err) {
-        D.info("Failed to fetch vocab:", err);
+        D.error("Failed to fetch vocab:", err, "Returned empty []");
+        return [];
     }
 }
 

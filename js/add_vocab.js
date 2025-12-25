@@ -9,7 +9,9 @@ const add_btn = document.getElementById('confirm-send');
 
 function safe_trim(v) {
     if (v) return v.trim();
-    else return v;
+    
+    D.debug("Empty v");
+    return v;
 }
 
 function get_new_vocab() {
@@ -29,23 +31,18 @@ function get_new_vocab() {
 }
 
 function isValid(vocab) {
-    const pos = {
-        "file": "add_vocab",
-        "func": "isValid"
-    };
-
     if (!vocab.word) {
-        D.error("Invalid word:", vocab.word, "at: ", pos);
+        D.error("Invalid word");
         return 'invalid';
     }
 
     if (!vocab.definition) {
-        D.error("invalid definition", vocab.definition);
+        D.error("Invalid definition");
         return 'invalid';
     }
 
     if (vocab.word !== vocab.confirm) {
-        D.warn("word != confirm");
+        D.warn("The confirm word isn't same to the original word");
         return 'word != confirm';
     }
     
@@ -53,8 +50,6 @@ function isValid(vocab) {
 }
 
 add_btn.addEventListener('click', () => {
-    D.info("add_btn clicked");
-
     const vocab = get_new_vocab();
 
     const ret = isValid(vocab);
@@ -70,7 +65,7 @@ add_btn.addEventListener('click', () => {
     }
 
     if (ret != 'valid') {
-        D.error("invalid return value of isValid", ret);
+        D.error("Invalid return value of isValid", ret);
         return;
     }
 

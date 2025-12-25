@@ -5,7 +5,7 @@ let display_word = null;
 
 export function set_display_word(wordObj) {
     if (!wordObj) {
-        D.error("no word to set", wordObj);
+        D.error("N o word to set", wordObj);
         return;
     }
 
@@ -16,7 +16,7 @@ export function set_display_word(wordObj) {
 
 function render_word() {
     if (!display_word) {
-        D.error("no word to render", show_word);
+        D.error("No word to render", show_word);
         return;
     }
 
@@ -27,4 +27,6 @@ function render_word() {
     document.getElementById("display-example").textContent = display_word.example ?? "";
 
     show_page("display");
+
+    D.debug(`Render vocab [${display_word.word}] complete`)
 }
