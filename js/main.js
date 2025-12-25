@@ -9,3 +9,4 @@ import "./add_vocab.js";
 import "./config.js";
 import "./sync.js";
 import "./push_vocab.js";
+import "./sync_panel.js"

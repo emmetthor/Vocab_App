@@ -113,3 +113,25 @@
 
     cursor: pointer;
 }
+
+.sync_panel {
+    display: flex;
+    align-items: center;
+
+    color: aliceblue;
+
+    padding: 1%;
+
+    border-radius: 100px;
+    background-color: rgb(70, 70, 70);
+
+    font-family: consolas;
+
+    gap:5px;
+}
+
+.sync_push {
+    border-radius: 100px;
+    padding: 5px;
+    background-color: black;
+}

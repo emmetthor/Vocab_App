@@ -27,7 +27,7 @@ async function pushVocab() {
     // TODO
 }
 
-document.getElementById("test_btn").addEventListener("click", async () => {
+document.getElementById("sync_push").addEventListener("click", async () => {
     D.info("test_btn clicked");
     pushVocab();
 });
