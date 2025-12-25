@@ -16,10 +16,13 @@ export async function fetch_vocab() {
 
     D.info("Start fetching...");
     try {
-        const response = await fetch(FETCH_URL);
+        const response = await fetch(FETCH_URL + `?t=${Date.now()}`);
         if (!response.ok) throw new Error('Network response failed');
 
         const vocab_list = await response.json();
+
+        //D.debug("vocab_list:", vocab_list);
+
         const dedupe_vocab_list = dedupe_vocab(vocab_list);
 
         if (dedupe_vocab_list.length === 0) {
