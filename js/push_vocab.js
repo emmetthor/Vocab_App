@@ -2,6 +2,7 @@ import { D } from "./debug.js";
 
 import { vocab_list } from "./data.js"
 import { check_sync } from "./sync.js";
+import { set_sync_panel_icon } from "./sync_panel.js";
 
 async function pushVocab() {
     //D.debug("vocab_list:", vocab_list);
