@@ -24,6 +24,8 @@ async function pushVocab() {
     }
 
     D.info("SYNCED");
+
+    set_sync_panel_icon("synced");
     // TODO
 }
 
