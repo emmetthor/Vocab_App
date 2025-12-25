@@ -3,6 +3,7 @@ import { D } from "./debug.js";
 import { vocab_list } from "./data.js"
 
 async function pushVocab() {
+    D.debug("vocab_list:", vocab_list);
     try {
         const res = await fetch("/api/git_push", {
             method: "POST",
