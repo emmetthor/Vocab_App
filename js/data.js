@@ -1,7 +1,9 @@
 import { D } from "./debug.js";
 import { fetch_vocab } from "./fetch_vocab.js";
+import { check_sync } from "./sync.js";
 
 export let vocab_list = [];
+export let remote_vocab_list = [];
 
 // 設定全域 vocab_list
 export function set_vocab(data) {
@@ -9,6 +11,12 @@ export function set_vocab(data) {
     D.info(`Saved to vocab_list in data.js, in a total of ${get_obj_length(data)} vocabs`);
 
     save_to_local();
+}
+
+export function set_remote_vocab(data) {
+    remote_vocab_list = data;
+
+    D.info(`Saved to remote_vocab_list in data.js, in a total of ${get_obj_length(data)} vocabs`);
 }
 
 export function dedupe_vocab(_vocab_list) {
@@ -38,6 +46,8 @@ export function dedupe_vocab(_vocab_list) {
 export function save_to_local() {
     localStorage.setItem("vocab_local", JSON.stringify(vocab_list));
     D.info (`Saved to LocalStorage, in a total of ${get_obj_length(vocab_list)} vocabs`);
+
+    check_sync(remote_vocab_list);
 }
 
 export function load_from_local() {
