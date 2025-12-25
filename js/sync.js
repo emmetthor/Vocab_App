@@ -18,7 +18,7 @@ async function get_local_commit() {
 }
 
 export async function check_sync(remote_vocab) {
-    //D.debug(`remote: ${remote_vocab}, local: ${vocab_list}`);
+    D.debug("remote:", remote_vocab, "local:", vocab_list);
     if (JSON.stringify(vocab_list) !== JSON.stringify(remote_vocab)) {
         D.warn("NOT SYNCED");
         set_sync_panel_icon("not_synced");
