@@ -22,6 +22,9 @@ async function pushVocab() {
     } catch (err) {
         D.error(err);
     }
+
+    D.info("SYNCED");
+    // TODO
 }
 
 document.getElementById("test_btn").addEventListener("click", async () => {
