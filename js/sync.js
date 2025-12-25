@@ -1,4 +1,5 @@
 import { API_URL } from "./config.js";
+import { vocab_list } from "./data.js";
 import { D } from "./debug.js";
 
 async function get_latest_commit() {
@@ -15,16 +16,12 @@ async function get_local_commit() {
     return data.commit;
 }
 
-export async function check_sync() {
-    const remote_commit = await get_latest_commit();
-    const local_commit = await get_local_commit();
-
-    if (remote_commit == local_commit) {
-        D.info("SYNCED");
-    } else {
+export async function check_sync(remote_vocab) {
+    if (JSON.stringify(vocab_list) !== JSON.stringify(remote_vocab)) {
         D.warn("NOT SYNCED");
+    } else {
+        D.info("SYNCED");
     }
 }
-
 
 check_sync();

@@ -14,7 +14,16 @@ async function pushVocab() {
             },
             body: JSON.stringify(vocab_list)
         });
+
         const ret = await res.json();
+
+        D.info("Push successful");
+
+        const new_commit = ret.result.commit.sha;
+        
+        
+
+        
     } catch (err) {
         D.error(err);
     }
