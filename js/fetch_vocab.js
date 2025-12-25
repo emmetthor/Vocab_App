@@ -24,7 +24,8 @@ export async function fetch_vocab() {
         const dedupe_vocab_list = dedupe_vocab(vocab_list);
 
         if (dedupe_vocab_list.length === 0) {
-            D.warn("dedupe_vocab_list is empty or invalid. Continued progress");
+            D.warn("dedupe_vocab_list is empty or invalid.");
+            D.info("Fetch ended with warnings");
         } else {
             D.info("Fetch successful");
         }
@@ -36,6 +37,7 @@ export async function fetch_vocab() {
         return dedupe_vocab_list;
     } catch (err) {
         D.error("Failed to fetch vocab:", err, "Returned empty []");
+        D.info("Fetch completed with errors");
         return [];
     }
 }
