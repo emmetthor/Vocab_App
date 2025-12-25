@@ -15,7 +15,7 @@ async function get_local_commit() {
     return data.commit;
 }
 
-async function check_sync() {
+export async function check_sync() {
     const remote_commit = await get_latest_commit();
     const local_commit = await get_local_commit();
 

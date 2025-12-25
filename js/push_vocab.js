@@ -1,9 +1,11 @@
 import { D } from "./debug.js";
 
 import { vocab_list } from "./data.js"
+import { check_sync } from "./sync.js";
 
 async function pushVocab() {
-    D.debug("vocab_list:", vocab_list);
+    //D.debug("vocab_list:", vocab_list);
+
     try {
         const res = await fetch("/api/git_push", {
             method: "POST",
@@ -13,10 +15,11 @@ async function pushVocab() {
             body: JSON.stringify(vocab_list)
         });
         const ret = await res.json();
-        D.info(ret);
     } catch (err) {
         D.error(err);
     }
+
+    check_sync();
 }
 
 document.getElementById("test_btn").addEventListener("click", async () => {
