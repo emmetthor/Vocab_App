@@ -26,3 +26,14 @@
 .main_card-text {
     font-size: large;
 }
+
+@media (max-width: 768px) {
+    .main_page {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .main_card {
+        width: 90%;
+        
+    }
+}
