@@ -7,6 +7,8 @@ import { set_sync_panel_icon } from "./sync_panel.js";
 async function pushVocab() {
     //D.debug("vocab_list:", vocab_list);
 
+    set_sync_panel_icon('loading');
+
     try {
         const res = await fetch("/api/git_push", {
             method: "POST",

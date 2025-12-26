@@ -3,27 +3,32 @@ import { D } from "./debug.js";
 
 const ICONS = {
     synced: "M280-120 80-320l200-200 57 56-104 104h607v80H233l104 104-57 56Zm400-320-57-56 104-104H120v-80h607L623-784l57-56 200 200-200 200Z",
-    not_synced: "m40-120 440-760 440 760H40Zm138-80h604L480-720 178-200Zm302-40q17 0 28.5-11.5T520-280q0-17-11.5-28.5T480-320q-17 0-28.5 11.5T440-280q0 17 11.5 28.5T480-240Zm-40-120h80v-200h-80v200Zm40-100Z"
+    not_synced: "m40-120 440-760 440 760H40Zm138-80h604L480-720 178-200Zm302-40q17 0 28.5-11.5T520-280q0-17-11.5-28.5T480-320q-17 0-28.5 11.5T440-280q0 17 11.5 28.5T480-240Zm-40-120h80v-200h-80v200Zm40-100Z",
+    loading: "M441-82q-76-8-141.5-41.5t-114.5-87Q136-264 108-333T80-480q0-157 104.5-270T441-878v81q-119 15-200 104.5T160-480q0 123 81 212.5T441-163v81Zm0-198v-247L337-423l-56-57 200-200 200 200-57 56-103-103v247h-80Zm80 198v-81q44-5 83.5-22t72.5-43l57 58q-45 36-99 59T521-82Zm155-650q-33-26-72-43t-83-22v-81q60 6 114 29t99 59l-58 58Zm114 505-57-57q26-33 43-72.5t22-83.5h81q-6 60-29.5 114T790-227Zm8-293q-5-44-22-83.5T733-676l57-57q36 45 59.5 99T879-520h-81Z"
 }
 
 const COLORS = {
     synced: "#1fff8bff",
-    not_synced: "#ffcb1fff"
+    not_synced: "#ffcb1fff",
+    loading: "#c8c8c8ff"
 }
 
 const BACKGROUND = {
     synced: "#1fff8b20",
-    not_synced: "#ffcb1f20"
+    not_synced: "#ffcb1f20",
+    loading: "#000000ff",
 }
 
 const INDICATOR = {
     synced: "synced",
-    not_synced: "not synced"
+    not_synced: "not synced",
+    loading: "loading"
 }
 
 const VISIBLE = {
     synced: "none",
-    not_synced: "block"
+    not_synced: "block",
+    loading: "none"
 }
 
 const sync_panel = document.getElementById("sync_panel");
