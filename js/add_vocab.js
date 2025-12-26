@@ -74,4 +74,14 @@ add_btn.addEventListener('click', () => {
     alert('Added successfully!');
 
     save_to_local();
+
+    clear_input();
 });
+
+function clear_input() {
+    word.value = '';
+    pos.value = '';
+    definition.value = '';
+    example.value = '';
+    confirm.value = '';
+}
