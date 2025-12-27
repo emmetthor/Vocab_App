@@ -27,6 +27,30 @@
     font-size: large;
 }
 
+.progress-count-number {
+    font-family: consolas;
+    font-size: xx-large;
+    font-weight: 1000;
+
+    background: linear-gradient(135deg, rgb(141, 240, 255), rgb(194, 133, 255), rgb(141, 240, 255));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation: gradient-flow 6s ease-in-out infinite;
+}
+
+@keyframes gradient-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
 @media (max-width: 768px) {
     .main_page {
         flex-direction: column;
@@ -36,4 +60,9 @@
         width: 90%;
         
     }
+    .progress-count-number {
+        font-size: x-large;
+    }
+
 }
+

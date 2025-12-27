@@ -11,6 +11,8 @@ export function set_vocab(data) {
     D.info(`Saved to vocab_list in data.js, in a total of ${get_obj_length(data)} vocabs`);
 
     save_to_local();
+
+    set_total_vocab_cnt();
 }
 
 export function set_remote_vocab(data) {
@@ -135,4 +137,9 @@ async function init_vocab() {
 
 export function get_obj_length(obj) {
     return Object.keys(obj).length;
+}
+
+export function set_total_vocab_cnt() {
+    const span = document.getElementById("progress-count-number");
+    span.textContent = vocab_list.length;
 }
