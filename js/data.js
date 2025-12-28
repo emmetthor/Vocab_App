@@ -12,7 +12,7 @@ export function set_vocab(data) {
 
     save_to_local();
 
-    set_total_vocab_cnt();
+    set_vocab_info();
 }
 
 export function set_remote_vocab(data) {
@@ -139,7 +139,14 @@ export function get_obj_length(obj) {
     return Object.keys(obj).length;
 }
 
-export function set_total_vocab_cnt() {
-    const span = document.getElementById("progress-count-number");
-    span.textContent = vocab_list.length;
+export function set_vocab_info() {
+    const total = document.getElementById("progress-count-number");
+    total.textContent = vocab_list.length;
+
+    const percent = document.getElementById("progress_vocab_percent");
+    let percent_cnt = vocab_list.length / 5000 * 100;
+    percent.textContent = Math.floor(percent_cnt);
+
+    const progress_bar = document.querySelector(".progress-bar");
+    progress_bar.style.width = `${percent_cnt}%`;
 }

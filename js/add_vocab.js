@@ -1,4 +1,4 @@
-import { save_to_local, set_total_vocab_cnt, vocab_list } from "./data.js";
+import { save_to_local, set_vocab_info, vocab_list } from "./data.js";
 import { D } from "./debug.js"
 const word = document.getElementById('add-vocab');
 const pos = document.getElementById('add-pos');
@@ -75,7 +75,7 @@ add_btn.addEventListener('click', () => {
 
     save_to_local();
 
-    set_total_vocab_cnt();
+    set_vocab_info();
 
     clear_input();
 });
