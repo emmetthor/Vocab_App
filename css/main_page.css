@@ -1,8 +1,9 @@
 .main_page {
     /* display: flex; */
-    justify-content: space-around;
 
     height: calc(100% - 100px);
+
+    gap: 10px;
 }
 
 .main_card {
