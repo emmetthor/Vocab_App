@@ -20,13 +20,10 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Missing prompt" });
     }
 
-    const result = await hf.textGeneration({
-      model: model_name,
-      inputs: prompt,
-      parameters: {
-        max_new_tokens: 200,
-        temperature: 0.7,
-      },
+    const result = await hf.chat({
+      model: "meta-llama/Llama-3.1-8B-Instruct",
+      messages: [{ role: "user", content: prompt }],
+      parameters: { max_new_tokens: 200, temperature: 0.7 },
     });
 
     // result 是一個陣列，每個 item 包含 text
