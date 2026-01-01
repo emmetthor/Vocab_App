@@ -32,7 +32,7 @@ async function askAI() {
 
     console.log(example);
     
-    example.textContent = data.answer;
+    example.value = data.answer;
 }
 
 document.getElementById("ai_example_btn").addEventListener("click", askAI);
