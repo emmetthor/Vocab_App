@@ -5,8 +5,8 @@ async function askAI() {
         body: JSON.stringify({ prompt }),
         headers: { "Content-Type": "application/json" }
     });
-    const data = await res.text();
-    document.getElementById("output").textContent = data.answer;
+    const data = await res.json();
+    console.log(data);
 }
 
 document.getElementById("send").addEventListener("click", askAI);
