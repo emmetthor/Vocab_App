@@ -1,7 +1,7 @@
 {
   "name": "vocab-app",
   "private": true,
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@huggingface/inference": "^2.6.4"
   }
