@@ -25,6 +25,10 @@
     height: max-content;
 }
 
+.main_card:hover {
+    border-color: rgb(100, 100, 100);
+}
+
 .main_card-text {
     font-size: large;
     font-family: consolas;
