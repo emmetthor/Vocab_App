@@ -1,7 +1,9 @@
-//export const runtime = "nodejs";
-import { InferenceClient } from "@huggingface/inference";
+// 記得 Vercel Node runtime
+export const runtime = "nodejs";
 
-const client = new InferenceClient(process.env.HF_TOKEN);
+import { HfInference } from "@huggingface/inference";
+
+const hf = new HfInference(process.env.HF_TOKEN);
 
 export default async function handler(req, res) {
   try {
@@ -14,17 +16,21 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "Missing prompt" });
     }
 
-    // 在 async function 裡使用 await
-    const chatCompletion = await client.chatCompletion({
+    const result = await hf.textGeneration({
       model: "meta-llama/Llama-3.1-8B-Instruct:novita",
-      messages: [{ role: "user", content: prompt }],
+      inputs: prompt,
+      parameters: {
+        max_new_tokens: 200,
+        temperature: 0.7,
+      },
     });
 
-    return res.status(200).json({
-      answer: chatCompletion.choices[0].message.content,
-    });
+    // result 是一個陣列，每個 item 包含 text
+    const answer = Array.isArray(result) ? result[0].generated_text : result.generated_text;
+
+    return res.status(200).json({ answer });
   } catch (err) {
     console.error("ask_ai error:", err);
-    return res.status(500).json({ error: err.message });
+    return res.status(500).json({ error: err.message ?? "Internal Server Error" });
   }
 }
