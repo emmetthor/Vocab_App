@@ -27,6 +27,8 @@ async function askAI() {
         headers: { "Content-Type": "application/json" }
     });
     const data = await res.json();
+
+    console.log(data);
     
     example.textContent = data['answer'];
 }
