@@ -3,7 +3,9 @@ export const runtime = "nodejs";
 
 import { HfInference } from "@huggingface/inference";
 
-const hf = new HfInference(process.env.HF_TOKEN);
+const hf = new HfInference(process.env.HF_TOKEN, {
+  apiUrl: "https://router.huggingface.co/api"
+});
 
 export default async function handler(req, res) {
   try {
