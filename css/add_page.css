@@ -19,6 +19,12 @@
     width: 50%;
 }
 
+@media(max-width: 768px) {
+    .add_inputs {
+        width: 90%;
+    }
+}
+
 .add_input {
     grid-column: 2;
 
