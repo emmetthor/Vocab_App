@@ -1,5 +1,6 @@
 export const runtime = "nodejs";
-import InferenceClient from "@huggingface/inference";
+
+const { InferenceClient } = require("@huggingface/inference");
 
 const client = new InferenceClient(process.env.HF_TOKEN);
 
