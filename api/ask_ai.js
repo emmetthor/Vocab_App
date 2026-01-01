@@ -7,6 +7,8 @@ const hf = new HfInference(process.env.HF_TOKEN, {
   apiUrl: "https://router.huggingface.co/api"
 });
 
+const model_name = "meta-llama/Meta-Llama-3.1-8B-Instruct";
+
 export default async function handler(req, res) {
   try {
     if (req.method !== "POST") {
@@ -19,7 +21,7 @@ export default async function handler(req, res) {
     }
 
     const result = await hf.textGeneration({
-      model: "meta-llama/Llama-3.1-8B-Instruct:novita",
+      model: model_name,
       inputs: prompt,
       parameters: {
         max_new_tokens: 200,
