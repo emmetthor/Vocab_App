@@ -5,7 +5,7 @@ async function askAI() {
         body: JSON.stringify({ prompt }),
         headers: { "Content-Type": "application/json" }
     });
-    const data = await res.json();
+    const data = await res.text();
     document.getElementById("output").textContent = data.answer;
 }
 
