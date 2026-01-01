@@ -29,8 +29,10 @@ async function askAI() {
     const data = await res.json();
 
     console.log(data);
+
+    console.log(example);
     
-    example.textContent = data['answer'];
+    example.textContent = data.answer;
 }
 
 document.getElementById("ai_example_btn").addEventListener("click", askAI);
