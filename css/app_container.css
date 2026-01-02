@@ -3,4 +3,12 @@
     grid-template-columns: 15% 1fr;   /* 左側是 sidebar，右側內容自適應 */
     grid-template-rows: auto 1fr;       /* 第一列是 headbar，第二列是內容 */
     height: 100vh;
+
+    background-color: rgb(10, 10, 10);
+}
+
+.app_container.collapse {
+    grid-template-columns: 44px 1fr;
+
+    transition: all 500ms;
 }
