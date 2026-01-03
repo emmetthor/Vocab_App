@@ -110,36 +110,3 @@
 .add_input_btn:hover {
     color: rgb(74, 201, 220);
 }
-
-.add_page_tooltip {
-    position: absolute;
-
-    left: 50%;
-    transform: translateX(-50%) translateY(-10px);
-    width: max-content;
-
-    padding: 1em;
-    
-    background-color: #000;
-    color: aliceblue;
-
-    border-radius: 20px;
-    border: 1px solid rgb(70, 70, 70);
-
-    cursor: default;
-
-    pointer-events: none;
-
-    font-size: small;
-
-    transition: opacity 150ms ease, transform 200ms ease;
-
-    opacity: 0;
-
-    z-index: 100;
-}
-
-.add_page_tooltip.active {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}

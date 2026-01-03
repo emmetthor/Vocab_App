@@ -1,0 +1,44 @@
+.tooltip-anchor {
+    /*使 tooltip 可以確定 position*/
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+
+    transform: translateX(-50%) translateY(-10px);
+    width: max-content;
+
+    padding: 1em;
+    
+    background-color: #000;
+    color: aliceblue;
+
+    border-radius: 20px;
+    border: 1px solid rgb(70, 70, 70);
+
+    cursor: default;
+
+    pointer-events: none;
+
+    font-size: small;
+
+    transition: opacity 150ms ease, transform 200ms ease;
+
+    opacity: 0;
+
+    z-index: 100;
+}
+
+.tooltip.active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.tooltip.center-top {
+    /* 在中間 */
+    left: 50%; 
+
+    /* 給一點 top 空間 */
+    top: 10%;
+}

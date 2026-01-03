@@ -4,6 +4,7 @@ import { D } from "./debug.js";
 import { exact_search } from "./search.js";
 import { getFromInput } from "./utils/get.js";
 import { isStringEmpty, safeTrim } from "./utils/string.js";
+import { TOOLTIP } from "./utils/tooltip.js";
 
 // 讀入 html 物件 
 const wordInput         = document.getElementById('addVocabInput');
@@ -18,10 +19,10 @@ const addVocabBtn       = document.getElementById('addVocabBtn');
 // 取得使用者輸入的資料
 function getNewVocab() {
     return {
-        word:       getFromInput(wordInput, "trim"),
-        pos:        getFromInput(posInput, "trim"),
-        definition: getFromInput(definitionInput, "trim"),
-        example:    getFromInput(exampleInput, "trim"),
+        word:       getFromInput(wordInput,         "trim"),
+        pos:        getFromInput(posInput,          "trim"),
+        definition: getFromInput(definitionInput,   "trim"),
+        example:    getFromInput(exampleInput,      "trim"),
         confirm:    getFromInput(confirmVocabInput, "trim")
     };
 }
@@ -30,12 +31,17 @@ function getNewVocab() {
 function isValid(vocabObj) {
     if (isStringEmpty(vocabObj.word)) {
         D.warn("isValid: empty word");
-        return "invalid";
+        return "invalid_word";
+    }
+
+    if (isStringEmpty(vocabObj.posInput)) {
+        D.warn("isValid: empty pos");
+        return "invalid_pos";
     }
 
     if (isStringEmpty(vocabObj.definition)) {
         D.warn("isValid: empty definition");
-        return "invalid";
+        return "invalid_definition";
     }
 
     if (vocabObj.word !== vocabObj.confirm) {
@@ -46,30 +52,11 @@ function isValid(vocabObj) {
     return 'valid';
 }
 
-const tooltip = document.getElementById("word_tooltip");
-const TOOLTIP = {
-    same_vocab: "已存在相同詞彙，請確認是否新增",
-    none: "",
-    invalid: "單字或定義為空，請檢查輸入",
-    word_unequal_confirm: "單字與確認單字不符，請檢查輸入",
-    success: "成功新增單字",
-}
-
-let hideTimer = null;
-
-function show_tooltip(id, class_name) {
-    if (hideTimer) {
-        clearTimeout(hideTimer);
-        hideTimer = null;
-    }
-
-    tooltip.textContent = TOOLTIP[id];
-    reset_class(tooltip, class_name);
-
-    hideTimer = setTimeout(() => {
-        tooltip.classList.remove(class_name);
-    }, 3000);
-}
+// 建立 tooltip
+const tooltip = new TOOLTIP(
+    document.getElementById("add_inputs"),
+    "center-top"
+)
 
 // 點擊按鈕事件
 addVocabBtn.addEventListener("click", () => {
@@ -77,19 +64,28 @@ addVocabBtn.addEventListener("click", () => {
 
     const isValidRet = isValid(vocabObj);
 
-    if (isValidRet === 'invalid' || isValidRet === 'word_unequal_confirm') {
-        show_tooltip(isValidRet, 'active');
-        return;
-    }
-
-    if (isValidRet != 'valid') {
-        D.error(`addVocabBtn: invalid value of isValidRet [${isValidRet}]`);
-        return;
+    switch (isValidRet) {
+        case "invalid_word":
+            tooltip.show("必須存在單字才能新增");
+            return;
+        case "invalid_pos":
+            tooltip.show("必須存在詞性才能新增");
+            return;
+        case "invalid_definition":
+            tooltip.show("必須存在定義才能新增");
+            return;
+        case "word_unequal_confirm":
+            tooltip.show("單字與確認單字不符，請檢查輸入");
+            return;
+        case "valid":
+            break;
+        default:
+            D.error(`addVocabBtn: invalid value of isValidRet [${isValidRet}]`);
     }
 
     vocab_list.push(vocabObj);
 
-    show_tooltip('success', 'active');
+    tooltip.show(`成功新增單字 ${vocabObj.word}`);
 
     save_to_local();
 
@@ -100,10 +96,10 @@ addVocabBtn.addEventListener("click", () => {
 
 // 清空網頁上殘存的資訊
 function clearInputs() {
-    wordInput.value = "";
-    posInput.value = "";
-    definitionInput.value = "";
-    exampleInput.value = "";
+    wordInput.value         = "";
+    posInput.value          = "";
+    definitionInput.value   = "";
+    exampleInput.value      = "";
     confirmVocabInput.value = "";
 }
 
@@ -115,6 +111,6 @@ wordInput.addEventListener("input", () => {
     D.debug("exactVocabList:", exactVocabList);
 
     if (exactVocabList.length >= 1) {
-        show_tooltip('same_vocab', 'active')
+        tooltip.show("已存在相同詞彙，請確認是否新增");
     }
 });
