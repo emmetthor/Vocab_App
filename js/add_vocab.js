@@ -1,51 +1,45 @@
 import { reset_class } from "./css_helper.js";
 import { save_to_local, set_vocab_info, vocab_list } from "./data.js";
-import { D } from "./debug.js"
-import { exact_search } from "./search.js"
+import { D } from "./debug.js";
+import { exact_search } from "./search.js";
+import { getFromInput } from "./utils/get.js";
+import { isStringEmpty, safeTrim } from "./utils/string.js";
 
-const word = document.getElementById('add-vocab');
-const pos = document.getElementById('add-pos');
-const definition = document.getElementById('add-definition');
-const example = document.getElementById('add-example');
-const confirm = document.getElementById('confirm_vocab');
-const add_btn = document.getElementById('confirm-send');
+// 讀入 html 物件 
+const wordInput         = document.getElementById('addVocabInput');
+const posInput          = document.getElementById('addPosInput');
+const definitionInput   = document.getElementById('addDefinitionInput');
+const exampleInput      = document.getElementById('addExampleInput');
+const confirmVocabInput = document.getElementById('confirmVocabInput');
+const addVocabBtn       = document.getElementById('addVocabBtn');
 
-function safe_trim(v) {
-    if (v) return v.trim();
-    
-    D.debug("Empty v");
-    return v;
+//console.log(wordInput, posInput, definitionInput, exampleInput, confirmVocabInput, addVocabBtn);
+
+// 取得使用者輸入的資料
+function getNewVocab() {
+    return {
+        word:       getFromInput(wordInput, "trim"),
+        pos:        getFromInput(posInput, "trim"),
+        definition: getFromInput(definitionInput, "trim"),
+        example:    getFromInput(exampleInput, "trim"),
+        confirm:    getFromInput(confirmVocabInput, "trim")
+    };
 }
 
-function get_new_vocab() {
-    let _w = word.value;
-    let _p = pos.value;
-    let _d = definition.value;
-    let _e = example.value;
-    let _c = confirm.value;
-
-    _w = safe_trim(_w);
-    _p = safe_trim(_p);
-    _d = safe_trim(_d);
-    _e = safe_trim(_e);
-    _c = safe_trim(_c);
-
-    return {word: _w, pos: _p, definition: _d, example: _e, confirm: _c};
-}
-
-function isValid(vocab) {
-    if (!vocab.word) {
-        D.error("Invalid word");
-        return 'invalid';
+// 確認使用者輸入資料正確
+function isValid(vocabObj) {
+    if (isStringEmpty(vocabObj.word)) {
+        D.warn("isValid: empty word");
+        return "invalid";
     }
 
-    if (!vocab.definition) {
-        D.error("Invalid definition");
-        return 'invalid';
+    if (isStringEmpty(vocabObj.definition)) {
+        D.warn("isValid: empty definition");
+        return "invalid";
     }
 
-    if (vocab.word !== vocab.confirm) {
-        D.warn("The confirm word isn't same to the original word");
+    if (vocabObj.word !== vocabObj.confirm) {
+        D.warn(`isValid: word is different from confirm word [${vocabObj.word}], [${vocabObj.confirm}]`);
         return 'word_unequal_confirm';
     }
     
@@ -77,22 +71,22 @@ function show_tooltip(id, class_name) {
     }, 3000);
 }
 
-add_btn.addEventListener('click', () => {
-    const vocab = get_new_vocab();
+addVocabBtn.addEventListener("click", () => {
+    const vocabObj = getNewVocab();
 
-    const ret = isValid(vocab);
+    const isValidRet = isValid(vocabObj);
 
-    if (ret === 'invalid' || ret === 'word_unequal_confirm') {
+    if (isValidRet === 'invalid' || isValidRet === 'word_unequal_confirm') {
         show_tooltip(ret, 'active');
         return;
     }
 
-    if (ret != 'valid') {
-        D.error("Invalid return value of isValid", ret);
+    if (isValidRet != 'valid') {
+        D.error(`addVocabBtn: invalid value of isValidRet [${isValidRet}]`);
         return;
     }
 
-    vocab_list.push(vocab);
+    vocab_list.push(vocabObj);
 
     show_tooltip('success', 'active');
 
@@ -100,22 +94,24 @@ add_btn.addEventListener('click', () => {
 
     set_vocab_info();
 
-    clear_input();
+    clearInputs();
 });
 
-function clear_input() {
-    word.value = '';
-    pos.value = '';
-    definition.value = '';
-    example.value = '';
-    confirm.value = '';
+function clearInputs() {
+    wordInput.value = "";
+    posInput.value = "";
+    definitionInput.value = "";
+    exampleInput.value = "";
+    confirmVocabInput.value = "";
 }
 
-word.addEventListener("input", w => {
-    const exact_list = exact_search(w.target.value);
-    D.debug("exact_list:", exact_list);
+wordInput.addEventListener("input", () => {
+    const inputValue = getFromInput(wordInput, "trim");
+    const exactVocabList = exact_search(inputValue);
 
-    if (exact_list.length >= 1) {
+    D.debug("exactVocabList:", exact_list);
+
+    if (exactVocabList.length >= 1) {
         show_tooltip('same_vocab', 'active')
     }
 });
