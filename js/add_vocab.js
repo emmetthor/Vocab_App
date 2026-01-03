@@ -71,6 +71,7 @@ function show_tooltip(id, class_name) {
     }, 3000);
 }
 
+// 點擊按鈕事件
 addVocabBtn.addEventListener("click", () => {
     const vocabObj = getNewVocab();
 
@@ -97,6 +98,7 @@ addVocabBtn.addEventListener("click", () => {
     clearInputs();
 });
 
+// 清空網頁上殘存的資訊
 function clearInputs() {
     wordInput.value = "";
     posInput.value = "";
@@ -105,6 +107,7 @@ function clearInputs() {
     confirmVocabInput.value = "";
 }
 
+// 判斷單字是否曾經輸入過
 wordInput.addEventListener("input", () => {
     const inputValue = getFromInput(wordInput, "trim");
     const exactVocabList = exact_search(inputValue);
