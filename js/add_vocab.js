@@ -77,7 +77,7 @@ addVocabBtn.addEventListener("click", () => {
     const isValidRet = isValid(vocabObj);
 
     if (isValidRet === 'invalid' || isValidRet === 'word_unequal_confirm') {
-        show_tooltip(ret, 'active');
+        show_tooltip(isValidRet, 'active');
         return;
     }
 
@@ -109,7 +109,7 @@ wordInput.addEventListener("input", () => {
     const inputValue = getFromInput(wordInput, "trim");
     const exactVocabList = exact_search(inputValue);
 
-    D.debug("exactVocabList:", exact_list);
+    D.debug("exactVocabList:", exactVocabList);
 
     if (exactVocabList.length >= 1) {
         show_tooltip('same_vocab', 'active')
