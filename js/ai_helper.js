@@ -50,7 +50,7 @@ async function askAI() {
 
     //console.log(example);
     
-    example.value = jsonData.answer;
+    exampleInput.value = jsonData.answer;
 }
 
 document.getElementById("ai_example_btn").addEventListener("click", askAI);
