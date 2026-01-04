@@ -1,4 +1,3 @@
-import { reset_class } from "./css_helper.js";
 import { save_to_local, set_vocab_info, vocab_list } from "./data.js";
 import { D } from "./debug.js";
 import { exact_search } from "./search.js";
