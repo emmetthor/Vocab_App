@@ -11,7 +11,6 @@ import "./sync.js";
 import "./push_vocab.js";
 import "./sync_panel.js";
 import "./ai_helper.js";
-import "./css_helper.js"
 import "./collapse_nav.js"
 
 // 所有的 utils
