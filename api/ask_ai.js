@@ -14,7 +14,6 @@ export default async function handler(req, res) {
     const result = await hf.chatCompletion({
       model: "meta-llama/Llama-3.1-8B-Instruct",
       messages: [{ role: "user", content: prompt }],
-      parameters: { max_new_tokens: 200, temperature: 0.7 },
     });
 
     const answer = result.choices[0].message.content;
